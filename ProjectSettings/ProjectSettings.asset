@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 00000000000000000000000000000000
+  productGUID: f3622c5571d2ae34b8521ae74cf7bf78
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -920,7 +920,7 @@ PlayerSettings:
   cloudProjectId: 79973943-947d-4424-b320-959f17303c19
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Casual 2D Game
+  projectName: CPSC 481 Project
   organizationId: foxxblade
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
