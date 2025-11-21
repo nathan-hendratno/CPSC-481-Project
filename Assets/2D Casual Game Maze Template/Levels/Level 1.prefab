@@ -246,6 +246,9 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -395,10 +398,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -1143,10 +1142,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -2697,10 +2692,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -2949,10 +2940,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -4565,10 +4552,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -5809,10 +5792,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -6185,10 +6164,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -6437,10 +6412,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -6565,10 +6536,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -6631,10 +6598,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -7007,10 +6970,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -7073,10 +7032,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -7390,14 +7345,6 @@ PrefabInstance:
     - target: {fileID: 2396829889502170562, guid: 5a7a5162c4dd8b744aa9e8a054a523ce, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2396829889502170562, guid: 5a7a5162c4dd8b744aa9e8a054a523ce, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3430271053568713653, guid: 5a7a5162c4dd8b744aa9e8a054a523ce, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6734123217098796088, guid: 5a7a5162c4dd8b744aa9e8a054a523ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8511,10 +8458,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -9631,10 +9574,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -9821,10 +9760,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -9949,10 +9884,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -10077,10 +10008,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -10143,10 +10070,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
@@ -10209,10 +10132,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 866435966477047655}
     m_Modifications:
-    - target: {fileID: 2883153786330794024, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
-      propertyPath: m_DynamicOccludee
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4994364627910512926, guid: 40d95c4f613b443468924d4b1191b3ca, type: 3}
       propertyPath: m_Name
       value: Square
