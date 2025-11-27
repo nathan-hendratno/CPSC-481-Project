@@ -36,8 +36,17 @@ namespace MazeTemplate
 
         public void LevelWin()
         {
+            StartCoroutine(ShowWinAfterReplay());
+        }
+
+        private IEnumerator ShowWinAfterReplay()
+        {
+            // Wait for A* replay to draw (adjust this delay if needed)
+            yield return new WaitForSeconds(1.5f);
+
             winPanel.SetActive(true);
         }
+
 
         public void HideWinPanel()
         {

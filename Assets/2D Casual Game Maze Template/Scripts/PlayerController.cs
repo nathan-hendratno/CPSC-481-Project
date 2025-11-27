@@ -112,20 +112,21 @@ namespace MazeTemplate
         {
             if (collision.CompareTag("Win"))
             {
-                // Stop movement immediately
                 canMove = false;
                 rb.linearVelocity = Vector2.zero;
 
-                // Snap player to correct tile center (optional but clean)
-                var xValue = Mathf.Round(transform.position.x * 2f) / 2f;
-                var yValue = Mathf.Round(transform.position.y * 2f) / 2f;
-                transform.position = new Vector2(xValue, yValue);
+                // Hide player immediately
+                GetComponent<SpriteRenderer>().enabled = false;
 
-                // Show win UI
+                // Hide your trail (PathTrail)
+                var trail = FindObjectOfType<PathTrail>();
+                if (trail != null) trail.gameObject.SetActive(false);
+
+                // Start replay
+                FindObjectOfType<AStarDrawer>().DrawOptimalPath();
+
+                // Delay menu
                 gameplayUI.LevelWin();
-
-                // Optionally destroy player after delay
-                Destroy(gameObject, 3f);
             }
         }
 

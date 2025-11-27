@@ -8,7 +8,7 @@ public class PathCost : MonoBehaviour
 
     private struct PathNode
     {
-        public Vector2 cell;
+        public Vector2 cell; // stored as grid cell (x,y) using your GetCell conversion
         public int cost;
     }
 
@@ -66,7 +66,7 @@ public class PathCost : MonoBehaviour
         lastCell = current;
         UpdateCostDisplay();
 
-        // Notify PathTrail
+        // Notify any listeners with world-grid positions (as Vector2 grid coords)
         OnPathChanged?.Invoke(GetPositionList());
     }
 
@@ -90,4 +90,32 @@ public class PathCost : MonoBehaviour
         if (costText != null)
             costText.text = "Cost: " + cost;
     }
+
+    // -----------------------
+    // Public helpers for A*
+    // -----------------------
+
+    // Returns the tracked history as integer grid cells (Vector2Int)
+    // The first element is the starting cell.
+    public List<Vector2Int> GetCellHistory()
+    {
+        var outList = new List<Vector2Int>(history.Count);
+        foreach (var n in history)
+        {
+            int gx = Mathf.RoundToInt(n.cell.x);
+            int gy = Mathf.RoundToInt(n.cell.y);
+            outList.Add(new Vector2Int(gx, gy));
+        }
+        return outList;
+    }
+
+    // Return start cell (if any), or an "invalid" sentinel if empty
+    public Vector2Int GetStartCell()
+    {
+        if (history.Count == 0)
+            return new Vector2Int(int.MinValue, int.MinValue);
+        var c = history[0].cell;
+        return new Vector2Int(Mathf.RoundToInt(c.x), Mathf.RoundToInt(c.y));
+    }
 }
+
