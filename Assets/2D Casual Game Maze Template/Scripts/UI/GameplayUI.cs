@@ -42,7 +42,7 @@ namespace MazeTemplate
         private IEnumerator ShowWinAfterReplay()
         {
             // Wait for A* replay to draw (adjust this delay if needed)
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(3f);
 
             winPanel.SetActive(true);
         }
