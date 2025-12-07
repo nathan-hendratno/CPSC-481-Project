@@ -1,87 +1,91 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AStarDrawer : MonoBehaviour
 {
     private LineRenderer line;
     private AStarPathfinder aStar;
     private PathCost pathCost;
-    private PathTrail trail;
+    private Transform player;
+    private Transform win;
+    private List<Vector2Int> lastPath;
 
-    public Transform player;
-    public Transform win;
+    public void DrawOptimalPath(System.Action onReplayFinished)
+    {
+        StartCoroutine(DrawPathAnimated(onReplayFinished));
+    }
 
-    private void Start()
+    private void Awake()
     {
         line = GetComponent<LineRenderer>();
         aStar = FindObjectOfType<AStarPathfinder>();
         pathCost = FindObjectOfType<PathCost>();
-        trail = FindObjectOfType<PathTrail>();
-
-        StartCoroutine(FindRefsThenDraw());
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        win = GameObject.FindGameObjectWithTag("Win").transform;
     }
 
-    private IEnumerator FindRefsThenDraw()
+    private IEnumerator DrawPathAnimated(System.Action onReplayFinished)
     {
-        while (player == null || win == null)
-        {
-            yield return null;
-        }
-    }
+        var startCell = pathCost.GetCellHistory()[0];
+        var goalCell = WorldToCell(win.position);
+        lastPath = aStar.FindPath(startCell, goalCell);
 
-    public void DrawOptimalPath()
-    {
-        StartCoroutine(DrawPathAnimated());
-    }
+        // Hide player during replay
+        player.gameObject.SetActive(false);
 
-    private IEnumerator DrawPathAnimated()
-    {
-        Vector2Int startCell = pathCost.GetCellHistory()[0];
-        Vector2Int goalCell = WorldToCell(win.position);
-
-        Debug.Log("StartCell: " + startCell + "   GoalCell: " + goalCell);
-
-        var path = aStar.FindPath(startCell, goalCell);
-        Debug.Log("A* Path length = " + path.Count);
-
-        if (trail != null)
-            trail.gameObject.SetActive(false);
-        if (player != null)
-            player.gameObject.SetActive(false);
-
-        GameObject ghost = new GameObject("Ghost");
-        ghost.transform.position = CellToWorld(path[0]);
+        GameObject ghost = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        ghost.transform.localScale = Vector3.one * 0.6f;
+        ghost.name = "ReplayGhost";
+        ghost.GetComponent<Renderer>().material.color = Color.yellow;
 
         line.positionCount = 1;
+        ghost.transform.position = CellToWorld(lastPath[0]);
         line.SetPosition(0, ghost.transform.position);
 
-        for (int i = 1; i < path.Count; i++)
+        for (int i = 1; i < lastPath.Count; i++)
         {
-            Vector3 worldPos = CellToWorld(path[i]);
-            ghost.transform.position = worldPos;
-
+            Vector3 pos = CellToWorld(lastPath[i]);
+            ghost.transform.position = pos;
             line.positionCount = i + 1;
-            line.SetPosition(i, worldPos);
+            line.SetPosition(i, pos);
 
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.12f);
         }
 
-        Debug.Log("Replay Finished!");
+        Destroy(ghost);
+
+        onReplayFinished?.Invoke();
     }
 
-    private Vector2Int WorldToCell(Vector3 wp)
+    public void ShowScoresOnWinScreen()
     {
-        return new Vector2Int(Mathf.RoundToInt(wp.x - 0.5f), Mathf.RoundToInt(wp.y - 0.5f));
+        // Win UI & Score UI are active now → safe to find it
+        TextMeshProUGUI scoreText = GameObject.Find("ScoreCompareText")?.GetComponent<TextMeshProUGUI>();
+        if (scoreText == null)
+        {
+            Debug.LogError("AStarDrawer: Could NOT find ScoreCompareText even after win screen active!");
+            return;
+        }
+
+        int yourCost = pathCost.GetCost();
+        int optimalCost = lastPath.Count;
+        int efficiency = Mathf.RoundToInt((float)optimalCost / yourCost * 100f);
+
+        scoreText.text =
+            $"Your Path: {yourCost}\n" +
+            $"Optimal Path: {optimalCost}\n" +
+            $"Efficiency: {efficiency}%";
+
+        scoreText.gameObject.SetActive(true);
     }
 
-    private Vector3 CellToWorld(Vector2Int cell)
-    {
-        return new Vector3(cell.x + 0.5f, cell.y + 0.5f, 0);
-    }
+    private Vector2Int WorldToCell(Vector3 pos) =>
+        new Vector2Int(Mathf.RoundToInt(pos.x - 0.5f), Mathf.RoundToInt(pos.y - 0.5f));
+
+    private Vector3 CellToWorld(Vector2Int cell) =>
+        new Vector3(cell.x + 0.5f, cell.y + 0.5f, 0f);
 }
-
-
-
 
 

@@ -117,5 +117,11 @@ public class PathCost : MonoBehaviour
         var c = history[0].cell;
         return new Vector2Int(Mathf.RoundToInt(c.x), Mathf.RoundToInt(c.y));
     }
+
+    public int GetCost()
+    {
+        return cost;
+    }
+
 }
 

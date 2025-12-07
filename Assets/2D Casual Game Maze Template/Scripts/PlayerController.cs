@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace MazeTemplate
@@ -114,21 +115,34 @@ namespace MazeTemplate
             {
                 canMove = false;
                 rb.linearVelocity = Vector2.zero;
-
-                // Hide player immediately
                 GetComponent<SpriteRenderer>().enabled = false;
 
-                // Hide your trail (PathTrail)
-                var trail = FindObjectOfType<PathTrail>();
-                if (trail != null) trail.gameObject.SetActive(false);
+                var drawer = FindObjectOfType<AStarDrawer>();
+                var ui = FindObjectOfType<GameplayUI>();
 
-                // Start replay
-                FindObjectOfType<AStarDrawer>().DrawOptimalPath();
-
-                // Delay menu
-                gameplayUI.LevelWin();
+                drawer.DrawOptimalPath(() =>
+                {
+                    ui.LevelWin();  // This activates Win panel (and ScoreCompareText object)
+                    ui.StartCoroutine(ShowScoreDelayed(drawer));
+                });
             }
         }
+
+        private IEnumerator ShowScoreDelayed(AStarDrawer drawer)
+        {
+            TextMeshProUGUI scoreText = null;
+
+            // Keep waiting until ScoreCompareText becomes active in hierarchy
+            while (scoreText == null)
+            {
+                scoreText = GameObject.Find("ScoreCompareText")?.GetComponent<TextMeshProUGUI>();
+                yield return null; // wait next frame
+            }
+
+            // Now the UI is guaranteed active → update score
+            drawer.ShowScoresOnWinScreen();
+        }
+
 
     }
 }
