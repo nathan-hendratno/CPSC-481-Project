@@ -8,7 +8,7 @@ public class PathCost : MonoBehaviour
 
     private struct PathNode
     {
-        public Vector2 cell; // stored as grid cell (x,y) using your GetCell conversion
+        public Vector2 cell;
         public int cost;
     }
 
@@ -25,7 +25,6 @@ public class PathCost : MonoBehaviour
 
         lastCell = GetCell(transform.position);
 
-        // Add starting node
         history.Add(new PathNode
         {
             cell = lastCell,
@@ -39,36 +38,55 @@ public class PathCost : MonoBehaviour
     {
         Vector2 current = GetCell(transform.position);
 
+        // No movement = no update
         if (current == lastCell)
             return;
 
+        // Check if this tile was visited before (backtrack)
         int index = history.FindIndex(n => n.cell == current);
 
         if (index != -1)
         {
-            // rewind
+            // -------------------------
+            // BACKTRACK REWIND RESTORE
+            // -------------------------
             cost = history[index].cost;
-
-            // remove everything after that point
             history.RemoveRange(index + 1, history.Count - (index + 1));
         }
         else
         {
-            // Forward movement
-            cost++;
-            history.Add(new PathNode
+            // -------------------------
+            // SLIDE TILE COUNT FIX
+            // (counts every tile moved through)
+            // -------------------------
+
+            int dx = Mathf.RoundToInt(current.x - lastCell.x);
+            int dy = Mathf.RoundToInt(current.y - lastCell.y);
+
+            int stepX = dx == 0 ? 0 : (dx > 0 ? 1 : -1);
+            int stepY = dy == 0 ? 0 : (dy > 0 ? 1 : -1);
+
+            // Only one axis moves at a time (slide logic)
+            int steps = Mathf.Abs(dx) + Mathf.Abs(dy);
+
+            for (int i = 1; i <= steps; i++)
             {
-                cell = current,
-                cost = cost
-            });
+                Vector2 newCell = new Vector2(
+                    lastCell.x + (stepX * i),
+                    lastCell.y + (stepY * i)
+                );
+
+                cost++;
+                history.Add(new PathNode { cell = newCell, cost = cost });
+            }
         }
 
         lastCell = current;
         UpdateCostDisplay();
-
-        // Notify any listeners with world-grid positions (as Vector2 grid coords)
-        OnPathChanged?.Invoke(GetPositionList());
+        OnPathChanged?.Invoke(GetPositionList());   // <--- TRIGGER TRAIL UPDATES
     }
+
+
 
     private List<Vector2> GetPositionList()
     {
@@ -91,12 +109,6 @@ public class PathCost : MonoBehaviour
             costText.text = "Cost: " + cost;
     }
 
-    // -----------------------
-    // Public helpers for A*
-    // -----------------------
-
-    // Returns the tracked history as integer grid cells (Vector2Int)
-    // The first element is the starting cell.
     public List<Vector2Int> GetCellHistory()
     {
         var outList = new List<Vector2Int>(history.Count);
@@ -109,7 +121,6 @@ public class PathCost : MonoBehaviour
         return outList;
     }
 
-    // Return start cell (if any), or an "invalid" sentinel if empty
     public Vector2Int GetStartCell()
     {
         if (history.Count == 0)
@@ -123,5 +134,21 @@ public class PathCost : MonoBehaviour
         return cost;
     }
 
-}
+    public void AddCost(int amount)
+    {
+        if (amount <= 0)
+            return;
 
+        cost += amount;
+
+        // Add this new position update to history
+        history.Add(new PathNode
+        {
+            cell = lastCell,
+            cost = cost
+        });
+
+        UpdateCostDisplay();
+    }
+
+}

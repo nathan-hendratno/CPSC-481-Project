@@ -4,25 +4,38 @@ using UnityEngine;
 public class PathTrail : MonoBehaviour
 {
     private LineRenderer line;
+    private PathCost pathCost;
 
     private void Start()
     {
         line = GetComponent<LineRenderer>();
         line.positionCount = 0;
 
-        // Find PathCost and subscribe
-        PathCost cost = FindObjectOfType<PathCost>();
-        cost.OnPathChanged += UpdatePath;
+        pathCost = FindObjectOfType<PathCost>();
+        if (pathCost != null)
+        {
+            pathCost.OnPathChanged += UpdateTrail;
+        }
     }
 
-    private void UpdatePath(List<Vector2> visitedCells)
+    private void UpdateTrail(List<Vector2> visitedCells)
     {
-        line.positionCount = visitedCells.Count;
+        // Match line exactly to the visited path, including rewinds
+        int count = visitedCells.Count;
+        line.positionCount = count;
 
-        for (int i = 0; i < visitedCells.Count; i++)
+        for (int i = 0; i < count; i++)
         {
             Vector2 c = visitedCells[i];
-            line.SetPosition(i, new Vector3(c.x + 0.5f, c.y + 0.5f, 0));
+            line.SetPosition(i, new Vector3(c.x + 0.5f, c.y + 0.5f, 0f));
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (pathCost != null)
+        {
+            pathCost.OnPathChanged -= UpdateTrail;
         }
     }
 }

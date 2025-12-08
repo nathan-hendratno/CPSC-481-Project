@@ -71,8 +71,12 @@ public class AStarDrawer : MonoBehaviour
 
         int yourCost = pathCost.GetCost();
         int optimalCost = lastPath.Count;
-        int efficiency = Mathf.RoundToInt((float)optimalCost / yourCost * 100f);
 
+        // FIX: AI path currently includes +2 cells past the Win trigger -> remove them
+        if (optimalCost > 1)
+            optimalCost -= 2;
+
+        int efficiency = Mathf.RoundToInt((float)optimalCost / yourCost * 100f);
         scoreText.text =
             $"Your Path: {yourCost}\n" +
             $"Optimal Path: {optimalCost}\n" +

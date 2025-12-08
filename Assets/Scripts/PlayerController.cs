@@ -107,6 +107,9 @@ namespace MazeTemplate
             var xValue = Math.Round(gameObject.transform.position.x, 1);
             var yValue = Math.Round(gameObject.transform.position.y, 1);
             gameObject.transform.position = new Vector2((float)xValue, (float)yValue);
+
+            // NOTE: removed any calls to PathCost.AddCost(...) to avoid double-counting.
+            // The authoritative tile-counting is handled inside PathCost.Update() now.
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -142,7 +145,5 @@ namespace MazeTemplate
             // Now the UI is guaranteed active → update score
             drawer.ShowScoresOnWinScreen();
         }
-
-
     }
 }
