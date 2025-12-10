@@ -6,7 +6,8 @@ When finished, an AI using A* Search automatically displays the optimal path and
 ## 🚀 How to Run the Game
 
 1. Download the zip file in the release link in the repo
-2. Launch the .exe file
+2. Extract the zip file
+3. Launch the .exe file
 
 Gameplay:
 
