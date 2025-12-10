@@ -3,17 +3,19 @@
 A simple sliding-movement maze game where players navigate to the goal while leaving a visual path.
 When finished, an AI using A* Search automatically displays the optimal path and compares it to the player's path.
 
+Repo Link: https://github.com/nathan-hendratno/CPSC-481-Project
+
 ## 🚀 How to Run the Game
 
-1. Download the zip file in the release link in the repo
-2. Launch the .exe file
+1. Download the zip file in the release link in the repo 
+2. Extract the zip file
+3. Launch the CPSC 481 Project app file
 
 Gameplay:
 
 - Use WASD / Arrow Keys to move
-- OR swipe on touchscreen
 - Player slides in a direction until hitting a wall
-- Reach the goal tile to finish
+- Reach the end of the maze to finish
 - AI will replay the optimal route using A*
 - A score screen compares player path vs optimal path
 

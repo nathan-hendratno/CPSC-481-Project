@@ -26,6 +26,16 @@ namespace MazeTemplate
             gameObject.SetActive(false);
         }
 
+        public void QuitButton()
+        {
+            Application.Quit();   // Works in build
+
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;  // So it stops in editor too
+        #endif
+        }
+
+
         public void SoundButton()
         {
             if (DataScript.GetSoundVolume() == 0)
