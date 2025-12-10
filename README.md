@@ -12,9 +12,8 @@ When finished, an AI using A* Search automatically displays the optimal path and
 Gameplay:
 
 - Use WASD / Arrow Keys to move
-- OR swipe on touchscreen
 - Player slides in a direction until hitting a wall
-- Reach the goal tile to finish
+- Reach the end of the maze to finish
 - AI will replay the optimal route using A*
 - A score screen compares player path vs optimal path
 
