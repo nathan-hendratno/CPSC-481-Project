@@ -7,7 +7,7 @@ When finished, an AI using A* Search automatically displays the optimal path and
 
 1. Download the zip file in the release link in the repo
 2. Extract the zip file
-3. Launch the .exe file
+3. Launch the CPSC 481 Project app file
 
 Gameplay:
 
