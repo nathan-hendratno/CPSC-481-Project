@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class AStarDrawer : MonoBehaviour
@@ -83,6 +84,11 @@ public class AStarDrawer : MonoBehaviour
             $"Efficiency: {efficiency}%";
 
         scoreText.gameObject.SetActive(true);
+
+        // --- NEW: Log this run to CSV dataset ---
+        string levelName = SceneManager.GetActiveScene().name;
+        RunDataLogger.LogRun(levelName, yourCost, optimalCost, efficiency);
+
     }
 
     private Vector2Int WorldToCell(Vector3 pos) =>
