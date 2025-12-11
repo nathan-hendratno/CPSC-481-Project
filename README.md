@@ -18,6 +18,9 @@ Gameplay:
 - Reach the end of the maze to finish
 - AI will replay the optimal route using A*
 - A score screen compares player path vs optimal path
+- Result data would be logged into a CVS File
+
+Dataset location: C:/Users/.../AppData/LocalLow/CompanyName/GameName/run_data.csv
 
 ## If you want to open in Unity editor
 
