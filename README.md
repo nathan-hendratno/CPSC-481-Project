@@ -7,11 +7,7 @@ Repo Link: https://github.com/nathan-hendratno/CPSC-481-Project
 
 ## 🚀 How to Run the Game
 
-<<<<<<< HEAD
-1. Download the zip file in the release link in the repo 
-=======
 1. Download the zip file in the release link in the repo
->>>>>>> c8a95d26a4333f8ab116d819bb64c3cb9a32434d
 2. Extract the zip file
 3. Launch the CPSC 481 Project app file
 
@@ -46,6 +42,7 @@ Unity 2022.x or later
 - AStarDrawer.cs            → Draws optimal path replay + displays results
 - GridScanner.cs            → Detects maze walls and walkable cells for A*
 - GameplayUI.cs             → Controls in-game UI (pause, win screen, buttons)
+- DataRunLogger.cs          → Logs the User's run into a CSV file
 
 ## 🧾 Dependencies (only required if opened in unity editor/hub)
 
